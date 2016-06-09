@@ -1,0 +1,86 @@
+package Lab1;
+
+import java.util.Scanner;
+
+import Bowling.*;
+
+/*The problem for lab one is exercise 25A on page 55.
+*This is the driver program used to show that the methods in the BowlingGame class work as desired
+*Just by running the program, you can see the scoring for a game with random shot values.
+*You can uncomment the commented part and comment the while loop part if you would like to test your own inputs
+*via console inputs and see each specific method in action.
+*Note that as .getIsFrameOver() returns the same boolean
+*/
+
+public class lab1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//		Scanner in = new Scanner(System.in);
+		System.out.print("Enter the name you would like to use: ");
+		String name = "NoName";
+//		name = in.nextLine();
+		BowlingGame game = new BowlingGame(name);
+		System.out.println("\n");
+		
+		randomLoop:
+		while (true){
+			System.out.println(game.getFrame());
+			int f = (int) (Math.random()*11);
+			int s = (int) (Math.random()*(10-f));
+			int t = f = 10 ? (int) (Math.random()*(10-s)) :(int) (Math.random()*11); ;
+			System.out.println("The shots are: "+f+" and "+s);
+			if (!game.shot(f))
+				if (!game.shot(s) || (game.getFrame() == 10 )){
+					System.out.println(game.getFrame()+" "+game.getIsFrameOver());
+					System.out.println("The third shot is/ would've been: "+t);
+					System.out.println("The game is now over: "+game.shot(t));
+					break randomLoop;
+				}
+			System.out.println(game);
+		}
+		
+		System.out.println("\n\n");
+		
+//		outer:
+//		while (true){
+//			int temp = game.getScore();
+//			System.out.println("The .getFrame() method returns the current frame: "+game.getFrame());
+//			System.out.print("Enter a number of pins knocked down on the first bowl: ");
+//			System.out.println("When you shoot, a boolean is returned whether the frame is over: "+game.shot(in.nextInt()));
+//			System.out.println("Unless there is a strike, the .getShotNum method returns that a shot has been made: "+game.getShotNum());
+//			System.out.println("The .getFirstBowl() method returns the first bowl of the frame: "+game.getFirstBowl());
+//			System.out.println("The .getIsFrameOver() returns whether the frame is over: "+game.getIsFrameOver());
+//
+//			while ( !game.getIsFrameOver()){
+//				System.out.print("Enter a number of pins knocked down on the next bowl: ");
+//				System.out.println("When you shoot, a boolean is returned whether the frame is over: "+game.shot(in.nextInt()));
+//				System.out.println("The .getIsFrameOver() returns whether the frame is over: "+ game.getIsFrameOver());
+//			}
+//			
+//			System.out.println("The .getScore() method returns the current score: "+game.getScore());
+//			System.out.println("The .getStrikes() method returns the number of strikes "+game.getStrikes());
+//			System.out.println("The .getSpares() method returns the number of spares "+game.getSpares());
+//			System.out.println("The .getGutterBalls() method returns the number of gutter balls "+game.getGutterBalls());
+//			System.out.println("The .toString() method returns a nicely formatted string: "+game);
+//			
+//			System.out.print("Enter q to quit or anything else to continue: ");
+//
+//			if (in.next().toUpperCase().equals("Q")) break outer;
+//			else if (game.getIsFrameOver() && game.getFrame() == 10){
+//				System.out.println("The game cannot be longer than 10 frames");
+//				break outer;
+//			}
+//			
+//			System.out.println(System.lineSeparator());
+//		}
+		
+		System.out.println("The final line is: ");
+		System.out.println(game);
+//		in.close();
+		System.out.println("The game is over.");
+		
+
+	}
+
+}

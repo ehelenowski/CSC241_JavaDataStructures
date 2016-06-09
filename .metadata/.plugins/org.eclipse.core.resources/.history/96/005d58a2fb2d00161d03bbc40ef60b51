@@ -1,0 +1,158 @@
+package Bowling;
+
+import java.util.ArrayList;
+
+public class BowlingGame {
+	private final String name;
+	private int frameNum = 1, score, strikes, spares, gutterBalls, shotNum, firstBowl, i = 1;
+	private ArrayList<shotType> shots = new ArrayList<shotType>();
+	private boolean fIsOver;
+	public static final int maxFrames = 10;
+	
+	//Initialize a BowlingGame object with the name of the bowler
+	public BowlingGame(String bowlerName){
+		this.name = bowlerName;
+		shots.add(null);
+		shots.add(null);
+	}
+	
+	/*
+	 * Only allows for a game to be 10 frames long. Allows for 3 bowls on the tenth frame, given that the bowler bowls either
+	 * a strike or a spare. Also increments the score appropriately and returns whether or not the frame is over.
+	 */
+	public boolean shot(int knocked){
+		i++;
+		shotNum++;
+		
+		if (frameNum <= maxFrames){
+		shots.add(getShotType(knocked));
+		
+		if (this.getFrame() == 10 && (shotNum == 2) && (shots.get(i-2) == shotType.Strike)) score += knocked*2;
+		else if (this.getFrame() == 10 && (shotNum == 2 || shotNum == 3) ) score += knocked;
+		else if (this.getFrame() == 10 && (shotNum == 3)) score += knocked;
+		else if (shots.get(i-2) == shotType.Strike && shots.get(i-1) == shotType.Strike) score += knocked*3;
+		else if (shots.get(i-1) == shotType.Strike || shots.get(i-1) == shotType.Spare || shots.get(i-2) == shotType.Strike) score += knocked*2;
+		else score +=knocked;
+		
+		switch(getShotType(knocked)){
+		case Strike:
+			strikes++;
+			if (frameNum < maxFrames){
+			fIsOver = true;
+			frameNum++;
+			shotNum = 0;
+			firstBowl = knocked;
+			}
+			else if (frameNum == maxFrames){
+				if (shotNum == 1){
+					firstBowl = knocked;
+					fIsOver = false;
+				}
+				else if (shotNum == 2){
+					fIsOver = false;
+				}
+				else if(shotNum == 3){
+					fIsOver = true;
+					frameNum++;
+				}
+			}
+			break;
+		case Spare:
+			spares++;
+			if (frameNum < maxFrames){
+			fIsOver = true;
+			shotNum = 0;
+			frameNum++;
+			}
+			else if (frameNum == maxFrames){
+				if (shotNum == 2)
+					fIsOver = false;
+				else if (shotNum == 3)
+					fIsOver = true;
+			}
+			break;
+		case GutterBall:
+			gutterBalls++;
+		default:
+			if (shotNum == 1 || (this.getFrame() == 10 && shots.get(i-1) == shotType.Strike && shotNum == 2)){
+				fIsOver = false;
+				firstBowl = knocked;
+			}
+			else if (shotNum > 1){
+				shotNum = 0;
+				fIsOver = true;
+				frameNum++;
+			}
+			break;
+		}
+		}
+		else if (frameNum > maxFrames){
+			fIsOver = true;
+			shotNum = 0;
+		}
+
+		return fIsOver;
+	}
+	
+	//Getter for whether or not the current frame is over
+	public boolean getIsFrameOver(){
+		return fIsOver;
+	}
+	
+	//Gets the type of the current shot. Hidden from user. Used within the shot method to classify the rolls.
+	private shotType getShotType(int roll){
+		if (roll == 0) return shotType.GutterBall;
+		else if ((shotNum == 1 && roll == 10)||((shotNum == 2 || shotNum ==3) && (roll == 10) && frameNum == 10)) return shotType.Strike;
+		else if ((shotNum == 2 || shotNum == 3) && roll + firstBowl == 10) return shotType.Spare;
+		else return shotType.None;
+	}
+	
+	//Returns what the first bowl of the current frame was
+	public int getFirstBowl(){
+		return firstBowl;
+	}
+	
+	/* 
+	 * Getter for the shot number in the current frame, returns how many shots have already been taken. Relatively useless to use as a user. 
+	 * Will only return a one or a zero, unless in 10th frame. Used for the algorithm's shot method to keep track of the frames.
+	 */
+	public int getShotNum(){
+		return shotNum;
+	}
+	
+	//Getter for the number of gutter balls
+	public int getGutterBalls(){
+		return gutterBalls;
+	}
+	
+	//Getter for the number of spares
+	public int getSpares(){
+		return spares;
+	}
+	
+	//Getter for the number of strikes
+	public int getStrikes(){
+		return strikes;
+	}
+	
+	//Getter for the score
+	public int getScore(){
+		return score;
+	}
+	
+	//Getter for the frame number. Accounts for the fact that the max frame is 10.
+	public int getFrame(){
+	 return frameNum <= maxFrames ? frameNum : maxFrames;
+	}
+	
+	//Getter for the name of the bowler
+	public String getName(){
+		return name;
+	}
+
+	//Formats the data of the game into an easily readable string
+	@Override
+	public String toString(){
+		return this.getName()+"'s game after frame "+this.getFrame()+": Score is "+this.getScore()+", Strikes "+this.getStrikes()+", Spares "+this.getSpares()+", Gutter Balls "+this.getGutterBalls();
+	}
+}
