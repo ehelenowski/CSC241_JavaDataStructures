@@ -1,0 +1,69 @@
+58. 
+The StringLog ADT is used to support the TriviaQuestion class because it is a convenient choice of data structure. The StringLog ADT is designed to hold a “log” of strings, and then to retrieve those strings at a later time. This is ideal for the use case of holding the possible answers to a trivia question. The built in functionality allows for the possible answers to a question to be stored, then when a question is answered using other functionality from the program, the StringLog ADT allows for a check to see if the given answer is contained within the specific StringLog of acceptable answers. Specifically, a bounded ArrayStringLog implementation is used in the specific case of this trivia game program. This was due to the fact that the number of correct answers to a question was a given finite number, making it a nice fit for an array implementation. It is convinced that the StringLog code is modularized so that it can be used across projects and in a variety of situations. The two implementations using the LinkedList and Array make it all the more versatile. 
+
+59. 
+To change the implementation of the StringLog ADT to the reference based implementation, all you would need to change the line:
+
+answers = new ArrayStringLog(“trivia”, maxNumAnswers);
+
+To the line:
+
+answers = new LinkedStringLog(“trivia”);
+
+Because both the ArrayStringLog and LinkedStringLog implementations of the StringLog ADT implement the same StringLogInterface, they have the same methods, just implemented in different ways (a linked list versus an array based implementation). This makes switching your implementation from the ArrayStringLog a trivial matter. All you have to do is change your implementation in the instantiation of the StringLog that holds the acceptable answers to the questions to the LinkedStringLog to make a reference based implementation, and the rest takes care of itself. Both implementations work equally well and the program runs smoothly either way. While it works this way, you could also get rid of the unnecessary maxNumAnswers in the constructor that bounds the StringLog (now that the reference based implementation is being used, it is unbounded). This changes the constructor from:
+
+public TriviaQuestion(String category, String question, int maxNumAnswers)
+
+To the constructor:
+
+public TriviaQuestion(String category, String question)
+
+Of course this means that code in the TriviaGame and GetTriviaGame classes must be changed where a TriviaQuestion is instantiated to support the new constructor, and the game text files might need to be in a different format.
+
+60A.
+Changing the order of the first two statements of the TriviaQuestion constructor from:
+
+this.category = category;
+this.question = question;
+
+To having the first two statements being:
+
+this.question = question;
+this.category = category;
+
+Has no effect on the performance of the program. It does not matter in what order the question and the category are assigned values. It is important to take note, that the order in which they are assigned does not matter in this case because they are separate entities and not interdependent. 
+
+60B.
+Changing the order of the first two statements of the insertQuestion method of the TriviaGame class from: 
+
+questions[currNumQuestions] = question;
+correct[currNumQuestions] = false; 
+
+To having the first two statements being:
+
+correct[currNumQuestions] = false; 
+questions[currNumQuestions] = question;
+
+Has no effect on the performance of the program. Similar to number 60, part A, the order of these operations is not important as they are not interdependent in any way. It doesn’t matter in what order the correct array and the questions array are set, as long as the right indices of the arrays are set to the correct values.
+
+60C.
+Changing the cod in the TriviaGame class’s isOver() method from:
+
+return (numCorrect == currNumQuestions) || (remainingChances <= 0);
+
+To the line:
+
+return (numCorrect == currNumQuestions) && (remainingChances <= 0);
+
+Creates a fatal flaw in the program. When the user gives their answers, if they get the question correct with more remaining chances left over (remainingChanges > 0), then the game will never end. The driver program will remain stuck in a loop trying to find the next unanswered question (or question that was previously answered incorrectly) but it will not be able to find it. So the condition that ends the game will never be reached if the user answers all of the questions correct before using all of their chances. Conversely, another bug is introduced in that, if the user doesn’t answer all of the questions correctly but runs out of chances, the game will not end, and will only end at the point that the user answers all of the questions correctly, effectively giving the user unlimited chances to get the questions correct. Obviously, each of these scenarios is unwanted and considered buggy behavior. It is obvious that the || operator creates the intended effect of ending the game either when all questions are correct or the user runs out of chances, which ever happens first. 
+
+62.
+Changing the TriviaGame class so that it constantly keeps track of the “game over” in an instance variable, is a relatively simple task. All you would need to do is to first add the following line:
+
+private boolean isGameOver;
+
+To the instance field of the class. Then you create a getter method for the variable and use it when you want to tell if the game is over (such as the while loop in the driver program). Then you can add the following line:
+
+isGameOver = (numCorrect == currNumQuestions) || (remainingChances <= 0);
+
+To the end of the correctAnswer() and incorrectAnswer() methods. Adding this line to the end of the correctAnswer() and incorrectAnswer() methods, updates the status of isGameOver after every answer whether it is correct or not. This constantly keeps track of the status of the game rather than a calculation in the isOver() method, as the code currently is. Once you implemented this change, you could effectively get rid of the isOver() method, as this way of keeping track of the game’s status serves the same purpose, but does it instantaneously instead. It does it instantaneously by updating the status after every action in the trivia game, either a correct or incorrect answer (which also happen to be the only methods that manipulate numCorrect and remainingChances).
