@@ -1,0 +1,29 @@
+Current Chicago Sports Trivia
+5
+7
+Chicago Cubs
+Give the first name of a starting infielder for the Chicago Cubs.
+4
+Kris
+Addison
+Ben
+Anthony
+Chicago Bulls
+What overall pick was Derrick Rose in the 2008 NBA Draft?
+2
+One
+1
+Chicago Bears
+Who is the starting quarterback for the Chicago Bears?
+2
+Jay Cutler
+Cutler
+Chicago BlackHawks
+What was the last year that the Chicago BlackHawks won the Stanley Cup? (Write a number)
+1
+2015
+Chicago White Sox
+Who is the ace of the Chicago White Sox pitching staff?
+2
+Chris Sale
+Sale
