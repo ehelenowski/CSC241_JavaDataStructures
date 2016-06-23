@@ -1,0 +1,41 @@
+package Lab3;
+import ch03.stacks.*;
+import java.util.Scanner;
+
+public class Lab3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner in = new java.util.Scanner(System.in);
+		
+		//For number 42
+		System.out.println("Problem 42:");
+		UnboundedStackInterface<String> stack42 = new LinkedStack<String>();
+		String command = "";
+		while (!command.equalsIgnoreCase("q")){
+			System.out.print("Enter a string to push onto the LinkedStack: ");
+			stack42.push(in.nextLine());
+			System.out.print("Enter q to quit or anything else to push more elements: ");
+			command = in.nextLine();
+		}
+		System.out.println("Now the LinkedStack toString() method returns a nice string");
+		System.out.println(stack42.toString());
+		
+		//For number 46A
+		System.out.println("Problem 46A:");
+		System.out.print("To check that the ArrayStack sizeIs() method works, enter a number: ");
+		int arrayNum = in.nextInt(); in.nextLine();
+		BoundedStackInterface<String> partAstack = new ArrayStack<String>(arrayNum);
+		System.out.println("While the ArrayStack is empty, the sizeIs() method should return zero.");
+		System.out.println("Now sizeIs() returns: "+partAstack.sizeIs());
+		int randNum1 = (int) Math.floor(Math.random()*(arrayNum+1));
+		System.out.println("Now the ArrayStack will be populated with "+randNum1+" element(s)");
+		for (;randNum1 > 0; randNum1--){
+			partAstack.push("This goes into the ArrayStack some number of times");
+		}
+		System.out.println("Now sizeIs() returns: "+partAstack.sizeIs());
+		
+		in.close();
+	}
+
+}

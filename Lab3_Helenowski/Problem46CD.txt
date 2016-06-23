@@ -1,0 +1,50 @@
+46C:
+First to augment the LinkedStack class in order to have an instance variable, size, that always holds the current size of the stack, you first have to add a variable named size to the instance field. You should initialize it to a size of zero, like so:
+
+protected int size = 0;
+
+Now, in the LinkedStack class, there are only two transformer methods, push and pop. These are the only two methods that should be allowed to change our size variable. Therefore, whenever push is called, an element is added, and you should increment size within the method like so:
+
+size++;
+
+Lastly, when pop is called, an element is removed, and you should decrease the size variable by one inside of the condition that the the stack is not empty, like so:
+
+size—-;
+
+Now all you would need to do is create a getter method for the size, like so:
+
+public int sizeIs(){
+	return size;
+}
+
+46D.
+The sizeIs() method of the array stack class that I wrote was simply:
+
+  public int sizeIs(){
+	  int temp = topIndex;
+	  return (temp+1);
+  }
+
+This made use of the fact that the class already kept track of what the top index in the stack was (-1 if empty). Returning this value plus one returns the number of elements in the stack without any extra code. This algorithm for size is would be O(1) or bounded time because the amount of work done doesn’t depend on the number of elements in the stack.
+
+The sizeIs() method that uses traversal in the linked stack class that I wrote can be seen here:
+
+  public int sizeIsUsingTraversal(){
+		 LLNode<T> tempNode = top;
+		 int length = 0;
+		 while (tempNode != null){
+			 tempNode = tempNode.getLink();
+			 length++;
+		 }
+		 return length;
+  }
+
+This simply traverses the linked list and uses an accumulator, length, that is used to count the transversals and thus the size of the stack. Because there is a traversal happening and there must be one entry of each element of the stack to count each element, there is a linear relationship between the run time and the number of elements in the stack. This is called O(N) or linear time.
+
+Lastly, the sizeIs() method that uses an instance variable in the linked stack class that I wrote was simply:
+
+  public int sizeIsUsingInstanceVar(){
+	  return size;
+  }
+
+Clearly, all this method does is return the instance variable that is manipulated by other methods. There is only one accessing of a variable and that doesn’t change based on the number of elements in the stack. Therefore, this algorithm is O(1) or bounded time, as the amount of work doesn’t change with the number of elements.
