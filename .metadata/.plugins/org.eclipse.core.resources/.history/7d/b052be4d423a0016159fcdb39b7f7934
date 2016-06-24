@@ -1,0 +1,49 @@
+package Lab4;
+
+public class PathFinder {
+	private final int N;
+	private final int row;
+	private final int col;
+	
+	public PathFinder(int N){
+		this.N = N;
+		row = 1;
+		col = 1;
+	}
+	
+	public int numPaths(int row, int col){
+		/* Preconditions: The row and column must either be 1 or less than N
+		 * 
+		 * Postconditions: Returns the number of paths you can take from (row, col) to
+		 * the point (n,n) where the only legal moves on the graph are to the right or up.
+		 */
+			if (row == N){
+				System.out.println("Bingo! You are in row "+N+" now all you do is move up");
+				return 1;
+			}
+			else if (col == N){
+				System.out.println("Bingo! You are in column "+N+" now all you do is move right");
+				return 1;
+			}
+			else{
+				int tempCol = col; int tempRow = row;
+				System.out.println("Move Right from column "+tempCol+" to column "+(tempCol+1));
+				int movesRight = numPaths(row, col+1);
+				System.out.println("Move Up from row "+tempRow+" to row "+(tempRow+1));
+				int movesUp = numPaths(row+1, col);
+				return movesRight+movesUp;
+			}
+//			if (row == n || col == n){
+//				System.out.println("Bingo! You are in the row or column "+n);
+//				return 1;
+//			}
+//			else{
+//				System.out.println("Move right");
+//				int movesRight = numPaths(row+1, col, n);
+//				System.out.println("Move up");
+//				int movesUp = numPaths(row, col+1, n);
+//				return movesRight+movesUp;
+//				return(numPaths(row+1, col, n) + numPaths(row, col+1, n));
+//			}
+		}
+}

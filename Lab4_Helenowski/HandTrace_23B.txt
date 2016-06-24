@@ -1,0 +1,155 @@
+23B.
+
+The book explicitly states to trace the execution of numPaths with n = 4 by hand and then to state why the algorithm is inefficient. The stack trace can be seen by uncommenting out the print line statements in the code, but is explained here, as the statements are not easily readable and may seem illogical upon first look. The answer you get for when n = 4, is that there are twenty paths. Below I explain the first ten paths, in the order that the algorithm prints them, explaining the logic behind them, then just copy and past the last ten paths once you get a feel of how the logic flows, I did this for the sake brevity. The explanation is between the two lines. To skip to see where I explain why the algorithm is inefficient, skip till after the second line.
+
+——————————————————————————————————————————————————————————————————————————————
+
+The algorithm would begin by first recursively calling itself to go right, beginning at the point row 1 and column 1. The moves it would make can be seen if you added the correct print statement, it would read:
+
+Move right from column 1 to column 2
+
+Next, the algorithm would recursively call itself to go right again. If you added the correct print statement it would read:
+
+Move right from column 2 to column 3
+
+Again, the algorithm would begin by first recursively calling itself to go right again. If you added the correct print statement it would read:
+
+Move right from column 3 to column 4
+
+Now, that you are in the 4th column, there is only one way to go, up. This would be the 1st path recorded by the program.
+
+Now, with activation records taken off the stack, the program would return to the move where you were at row 1 and column 3. The moves it would make are:
+
+Move up from row 1 to row 2
+Move right from column 3 to column 4
+
+Now, that you are in the 4th column, there is only one way to go, up. This would be the 2nd path recorded by the program.
+
+Now, with activation records taken off the stack, the program would return to the move where you were at row 2 and column 3. The moves it would make are:
+
+Move up from row 2 to row 3
+Move right from column 3 to column 4
+
+Now, that you are in the 4th column, there is only one way to go, up. This would be the 3rd path recorded by the program.
+
+Now, with activation records taken off the stack, the program would return to the move where you were at row 3 and column 3. The moves it would make are:
+
+Move up from row 3 to row 4
+
+Now, that you are in the 4th row, there is only one way to go, right. This would be the 4th path recorded by the program.
+
+Now, with activation records taken off the stack, the program would return to the move where you were at row 1 and column 2. The moves it would make are:
+
+Move up from row 1 to row 2
+Move right from column 2 to column 3
+Move right from column 3 to column 4
+
+Now, that you are in the 4th column, there is only one way to go, up. This would be the 5th path recorded by the program.
+
+Now, with activation records taken off the stack, the program would return to the move where you were at row 2 and column 3. The moves it would make are:
+
+Move up from row 2 to row 3
+Move right from column 3 to column 4
+
+Now, that you are in the 4th column, there is only one way to go, up. This would be the 6th path recorded by the program.
+
+Now, with activation records taken off the stack, the program would return to the move where you were at row 3 and column 3. The moves it would make are:
+
+Move up from row 3 to row 4
+
+Now, that you are in the 4th row, there is only one way to go, right. This would be the 7th path recorded by the program.
+
+Now, with activation records taken off the stack, the program would return to the move where you were at row 2 and column 3. The moves it would make are:
+
+Move up from row 2 to row 3
+Move right from column 2 to column 3
+Move right from column 3 to column 4
+
+Now, that you are in the 4th column, there is only one way to go, up. This would be the 8th path recorded by the program.
+
+Now, with activation records taken off the stack, the program would return to the move where you were at row 3 and column 2. The moves it would make are:
+
+Move up from row 3 to row 4
+
+Now, that you are in the 4th row, there is only one way to go, right. This would be the 9th path recorded by the program.
+
+Now, with activation records taken off the stack, the program would return to the move where you were at row 3 and column 3. The moves it would make are:
+
+Move up from row 3 to row 4
+
+Now, that you are in the 4th row, there is only one way to go, right. This would be the 10th path recorded by the program.
+
+Now, with activation records taken off the stack, the program would return to the move where you were at row 1 and column 1. The moves it would make are:
+
+Move up from row 1 to row 2
+Move right from column 1 to column 2
+Move right from column 2 to column 3
+Move right from column 3 to column 4
+
+Now, that you are in the 4th column, there is only one way to go, up. This would be the 11th path recorded by the program.
+
+Now, with activation records taken off the stack, the program would return to the move where you were at row 2 and column 3. The moves it would make are:
+
+Move up from row 2 to row 3
+Move right from column 3 to column 4
+
+Now, that you are in the 4th column, there is only one way to go, up. This would be the 12th path recorded by the program.
+
+Now, with activation records taken off the stack, the program would return to the move where you were at row 3 and column 3. The moves it would make are:
+
+Move up from row 3 to row 4
+
+Now, that you are in the 4th row, there is only one way to go, right. This would be the 13th path recorded by the program.
+
+Now, with activation records taken off the stack, the program would return to the move where you were at row 2 and column 2. The moves it would make are:
+
+Move up from row 2 to row 3
+Move right from column 2 to column 3
+Move right from column 3 to column 4
+
+Now, that you are in the 4th column, there is only one way to go, up. This would be the 14th path recorded by the program.
+
+Now, with activation records taken off the stack, the program would return to the move where you were at row 3 and column 2. The moves it would make are:
+
+Move up from row 3 to row 4
+
+Now, that you are in the 4th row, there is only one way to go, right. This would be the 15th path recorded by the program.
+
+Now, with activation records taken off the stack, the program would return to the move where you were at row 3 and column 3. The moves it would make are:
+
+Move up from row 3 to row 4
+
+Now, that you are in the 4th row, there is only one way to go, right. This would be the 16th path recorded by the program.
+
+Now, with activation records taken off the stack, the program would return to the move where you were at row 2 and column 1. The moves it would make are:
+
+Move up from row 2 to row 3
+Move right from column 1 to column 2
+Move right from column 2 to column 3
+Move right from column 3 to column 4
+
+Now, that you are in the 4th column, there is only one way to go, up. This would be the 17th path recorded by the program.
+
+Now, with activation records taken off the stack, the program would return to the move where you were at row 3 and column 3. The moves it would make are:
+
+Move up from row 3 to row 4
+
+Now, that you are in the 4th column, there is only one way to go, up. This would be the 18th path recorded by the program.
+
+Now, with activation records taken off the stack, the program would return to the move where you were at row 3 and column 2. The moves it would make are:
+
+Move up from row 3 to row 4
+
+Now, that you are in the 4th row, there is only one way to go, right. This would be the 19th path recorded by the program.
+
+Now, with activation records taken off the stack, the program would return to the move where you were at row 3 and column 1. The moves it would make are:
+
+Move up from row 3 to row 4
+
+Now, that you are in the 4th row, there is only one way to go, right. This would be the 20th path recorded by the program.
+
+The algorithm would then terminate by counting 20 paths, which is the correct answer.
+
+——————————————————————————————————————————————————————————————————————————————
+
+It isn’t hard to understand why this algorithm is so inefficient. You can see that it take many, many steps to solve this problem, just for N = 4. Imagine an even larger number, it would get way out of hand. The issue with this algorithm is that it uses purely brute force. It finds every single possible path and counts each possible path that way. This is a valid solution, but it would be very slow for larger numbers. The truth is, you don’t have to go and find every possible path to answer the question of how many possible paths there are. If you view this question from a more mathematical prospective, rather than brute forcing it, you can come up with a must more elegant solution. You can see that for a grid of size N = 4, that in order to reach the point (4,4) you need to move right 3 times and up 3 times, no matter how you get there. You see, really you just need to know the number of possible combinations of 3 up moves and 3 right moves, with 6 total moves. You can do this by using the combination formula, C(6,3) or (6!/3!)/3!, which will give you twenty. Using your knowledge of combinations and the problem, it is simple to see that the problem is easily solved by simply returning the value (N-1)!/(N/2)!/(N/2)!. By switching to a pure mathematical formula, you get an elegant mathematical solution that operates in O(1) or bounded time because the amount of work doesn’t depend on the number of entries. Clearly, this is a much more efficient way of solving the problem than brute forcing it using recursion. 

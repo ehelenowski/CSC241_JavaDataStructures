@@ -1,0 +1,32 @@
+package Lab4;
+
+public class Lab4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int t = numPaths(1,1,4);
+		System.out.println(t);
+	}
+	
+	public static int numPaths(int row, int col, int n){
+	/* Preconditions: The row and column must either be 1 or less than N
+	 * 
+	 * Postconditions: Returns the number of paths you can take from (row, col) to
+	 * the point (n,n) where the only legal moves on the graph are to the right or up.
+	 */
+		int tempRow = row, tempCol = col;
+		System.out.println("You are at row "+row+" and column "+col);
+		if (row == n || col == n){
+			System.out.println("Bingo! You are in the row or column "+n);
+			return 1;
+		}
+		else{
+			System.out.println("Move from column "+ tempCol +" move right to column "+(tempCol+1));
+			int movesRight = numPaths(row, col+1, n);
+			System.out.println("Move from row "+ tempRow+" move up to row "+(tempRow+1));
+			int movesUp = numPaths(row+1, col, n);
+			return movesRight+movesUp;
+		}
+	}
+
+}
