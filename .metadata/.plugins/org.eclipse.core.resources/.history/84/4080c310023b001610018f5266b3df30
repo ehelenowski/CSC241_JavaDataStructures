@@ -1,0 +1,12 @@
+package ExtraCredit;
+
+public class ExtraCredit {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		NumPaths test = new NumPaths(4);
+		System.out.print("From the point (1,1) to (4,4), there are: ");
+		System.out.print(test.findPathsFrom(1, 1));
+	}
+
+}
