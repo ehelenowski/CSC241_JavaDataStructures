@@ -1,6 +1,6 @@
 23B.
 
-The book explicitly states to trace the execution of numPaths with n = 4 by hand and then to state why the algorithm is inefficient. The stack trace can be seen by uncommenting out the print line statements in the code, but is explained here, as the statements are not easily readable and may seem illogical upon first look. The answer you get for when n = 4, is that there are twenty paths. Below I explain the first ten paths, in the order that the algorithm prints them, explaining the logic behind them, then just copy and past the last ten paths once you get a feel of how the logic flows, I did this for the sake brevity. The explanation is between the two lines. To skip to see where I explain why the algorithm is inefficient, skip till after the second line.
+The book explicitly states to trace the execution of numPaths with n = 4 by hand and then to state why the algorithm is inefficient. The stack trace can be seen by uncommenting out the print line statements in the code, but is explained here, as the statements are not easily readable and may seem illogical upon first look. The answer you get for when n = 4, is that there are twenty paths. Below I explain the all of the twenty paths, in the order that the algorithm prints them, explaining the logic behind them. The explanation is between the two lines. To skip to see where I explain why the algorithm is inefficient, skip till after the second line.
 
 ——————————————————————————————————————————————————————————————————————————————
 
@@ -149,6 +149,50 @@ Move up from row 3 to row 4
 Now, that you are in the 4th row, there is only one way to go, right. This would be the 20th path recorded by the program.
 
 The algorithm would then terminate by counting 20 paths, which is the correct answer.
+
+Another way to visualize the stack trace can be seen below- note that things are evaluated from left to right and that moves right are evaluated first:
+
+numPaths(1,1,4)
+= numPaths(2,1,4) + numPaths(1,2,4)
+= numPaths(3,1,4) + numPaths(2,2,4) + numPaths(1,2,4)
+= numPaths(4,1,4) + numPaths(3,2,4) + numPaths(2,2,4) + numPaths(1,2,4)
+= 1 + numPaths(3,2,4) + numPaths(2,2,4) + numPaths(1,2,4)
+= 1 + numPaths(4,2,4) + numPaths(3,3,4) + numPaths(2,2,4) + numPaths(1,2,4)
+= 1 + 1 + numPaths(4,3,4) + numPaths(3,4,4) + numPaths(2,2,4) + numPaths(1,2,4)
+= 2 + 1 + numPaths(3,4,4) + numPaths(2,2,4) + numPaths(1,2,4)
+= 3 + 1 + numPaths(2,2,4) + numPaths(1,2,4)
+= 4 + numPaths(3,2,4) + numPaths(2,3,4) + numPaths(1,2,4)
+= 4 + numPaths(4,2,4) + numPaths(3,3,4) + numPaths(2,3,4) + numPaths(1,2,4)
+= 4 + 1 + numPaths(3,3,4) + numPaths(2,3,4) + numPaths(1,2,4)
+= 5 + numPaths(4,3,4) + numPaths(3,4,4) + numPaths(2,3,4) + numPaths(1,2,4)
+= 5 + 1 + numPaths(3,4,4) + numPaths(2,3,4) + numPaths(1,2,4)
+= 6 + 1 + numPaths(2,3,4) + numPaths(1,2,4)
+= 7 + numPaths(2,3,4) + numPaths(1,2,4)
+= 7 + numPaths(3,3,4) + numPaths(2,4,4) + numPaths(1,2,4)
+= 7 + numPaths(4,3,4) + numPaths(3,4,4) + numPaths(2,4,4) + numPaths(1,2,4)
+= 7 + 1 + numPaths(3,4,4) + numPaths(2,4,4) + numPaths(1,2,4)
+= 8 + 1 + numPaths(2,4,4) + numPaths(1,2,4)
+= 9 + 1 + numPaths(1,2,4)
+= 10 + numPaths(2,2,4) + numPaths(1,3,4)
+= 10 + numPaths(3,2,4) + numPaths(2,3,4) + numPaths(1,3,4)
+= 10 + numPaths(4,2,4) + numPaths(3,3,4) + numPaths(2,3,4) + numPaths(1,3,4))
+= 10 + 1 + numPaths(3,3,4) + numPaths(2,3,4) + numPaths(1,3,4)
+= 11 + numPaths(4,3,4) + numPaths(3,4,4) + numPaths(2,3,4) + numPaths(1,3,4)
+= 11 + 1 + numPaths(3,4,4) + numPaths(2,3,4) + numPaths(1,3,4)
+= 12 + 1 + numPaths(2,3,4) + numPaths(1,3,4)
+= 13 + numPaths(3,3,4) + numPaths(2,4,4) + numPaths(1,3,4)
+= 13 + numPaths(4,3,4) + numPaths(3,4,4)) + numPaths(2,4,4) + numPaths(1,3,4))
+= 13 + 1 + numPaths(3,4,4) + numPaths(2,4,4) + numPaths(1,3,4)
+= 14 + 1 + numPaths(2,4,4) + numPaths(1,3,4)
+= 15 + 1 + numPaths(1,3,4))
+= 16 + numPaths(2,3,4) + numPaths(1,4,4)
+= 16 + numPaths(3,3,4) + numPaths(2,4,4) + numPaths(1,4,4)
+= 16 + numPaths(4,3,4) + numPaths(3,4,4) + numPaths(2,4,4) + numPaths(1,4,4)
+= 16 + 1 + numPaths(3,4,4) + numPaths(2,4,4) + numPaths(1,4,4)
+= 17 + 1 + numPaths(2,4,4) + numPaths(1,4,4)
+= 18 + 1 + numPaths(1,4,4)
+= 19 + 1
+= 20
 
 ——————————————————————————————————————————————————————————————————————————————
 
