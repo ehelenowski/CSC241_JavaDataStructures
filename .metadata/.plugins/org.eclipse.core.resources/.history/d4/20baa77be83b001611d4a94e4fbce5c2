@@ -1,0 +1,5 @@
+package Dequeue;
+
+public interface BoundedDequeueInterface<T> extends DequeueInterface<T> {
+
+}

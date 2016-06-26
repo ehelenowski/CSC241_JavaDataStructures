@@ -1,0 +1,10 @@
+package Lab5;
+
+public class Lab5 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		BoundedDequeueInterface<int> test = new ArrayBndDequeue<int>();
+	}
+
+}

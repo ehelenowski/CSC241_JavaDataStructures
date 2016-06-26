@@ -1,0 +1,56 @@
+package Dequeue;
+
+public class ArrayBndDequeue<T> implements BoundedDequeueInterface<T> {
+
+	T[] dequeue;
+	int maxSize;
+	
+	public ArrayBndDequeue(){
+		
+	}
+	
+	public ArrayBndDequeue(int maxSize){
+		
+	}
+	@Override
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public T dequeue() {
+		// TODO Auto-generated method stub
+		if (isEmpty()){
+			throw new DequeueUnderFlowException("Attempted to dequeue on empty dequeue");
+		}
+		else{
+		return null;
+		}
+	}
+
+	@Override
+	public T removeRear() throws DequeueUnderFlowException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void enqueue() throws DequeueOverFlowException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addFront() throws DequeueOverFlowException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isFull() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

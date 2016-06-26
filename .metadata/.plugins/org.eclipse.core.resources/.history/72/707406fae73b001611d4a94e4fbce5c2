@@ -1,0 +1,7 @@
+package Dequeue;
+
+public interface DequeueInterface<T> {
+	int isEmpty();
+	
+	
+}

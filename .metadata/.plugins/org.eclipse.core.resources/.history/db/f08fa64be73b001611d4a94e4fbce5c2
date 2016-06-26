@@ -1,0 +1,13 @@
+package Dequeue;
+
+public class DequeueUnderFlowException extends Exception{
+	
+	public DequeueUnderFlowException(){
+		super();
+	}
+	
+	public DequeueUnderFlowException(String message){
+		super(message);
+	}
+
+}

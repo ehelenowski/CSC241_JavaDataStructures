@@ -1,0 +1,8 @@
+package Dequeue;
+
+public interface DequeueInterface<T> {
+	int isEmpty();
+	T dequeue() throws DequeueUnderFlowException;
+	
+	
+}
