@@ -1,0 +1,23 @@
+package Exercise3;
+
+public class Exercise3 {
+
+	public static void main(String[] args) {
+
+		//To find part A, the next palindromic year after 2002 (comes out to 2112)
+		Integer year = new Integer(2002);
+		year++;
+		while (!Palindrome.test(year.toString())){
+			year++;
+		}
+		System.out.println("The next year after 2002 that is palindromic is: "+year);
+		
+		FindNextPalindromicDate test = new FindNextPalindromicDate(12,20,2013);
+		System.out.println(test);
+		test.increment();
+		System.out.println(test);
+		test.increment();
+		System.out.println(test);
+	}
+
+}
