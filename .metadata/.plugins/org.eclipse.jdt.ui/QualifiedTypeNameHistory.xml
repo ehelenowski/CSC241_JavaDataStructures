@@ -5,4 +5,5 @@
 <fullyQualifiedTypeName name="Dequeue.BoundedDequeueInterface"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="support.BSTNode"/>
+<fullyQualifiedTypeName name="lists.RefUnsortedList"/>
 </qualifiedTypeNameHistroy>

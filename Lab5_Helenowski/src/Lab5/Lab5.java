@@ -8,7 +8,6 @@ import Dequeue.DequeueUnderFlowException;
 public class Lab5 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		BoundedDequeueInterface<String> test = new ArrayBndDequeue<String>();
 		
 		try {
