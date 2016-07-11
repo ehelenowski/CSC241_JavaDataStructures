@@ -1,7 +1,0 @@
-package ExtraCredit;
-
-public class NumPaths {
-	private int[][] pathsAtpoint;
-	private int callsToRecursiveMethod;
-	
-}

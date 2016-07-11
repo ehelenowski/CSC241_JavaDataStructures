@@ -1,8 +1,0 @@
-package Exercise3;
-
-public class FindPalindromicDatesIn {
-
-	public static FindPalindromicDatesIn(String year){
-		
-	}
-}

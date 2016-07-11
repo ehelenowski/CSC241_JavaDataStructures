@@ -1,7 +1,0 @@
-package Dequeue;
-
-public interface BoundedDequeueInterface<T> extends DequeueInterface<T> {
-	void enqueue(T toBeAdded) throws DequeueOverFlowException;
-	void addFront() throws DequeueOverFlowException;
-	boolean isFull();
-}

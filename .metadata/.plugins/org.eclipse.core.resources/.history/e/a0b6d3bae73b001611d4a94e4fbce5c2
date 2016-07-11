@@ -1,5 +1,0 @@
-package Dequeue;
-
-public interface Dequeue {
-
-}
