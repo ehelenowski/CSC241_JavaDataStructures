@@ -1,0 +1,67 @@
+package Lab7;
+
+/*
+ *  22A. One algorithm that you could use would be to iterate through the characters of the smaller integer, beginning in the ones place,
+ *   and to add the larger integer to itself that many of times, holding this summation in a temporary variable. Then as you iterate to the tens
+ *   place and above, you add the appropriate number of zeros to the end of the this temporary number to get the correct scale multiplication. Then
+ *   you use a separate accumulator to sum these temporary numbers themselves, which are created for each character of the smaller integer. This
+ *   accumulator, after iterating through the entire smaller number, will give you the correct answer to the product of two large integers. This
+ *   is the algorithm that I will implement for the multiplication of large integers.This works relatively similarly to the addition algorithm, 
+ *   as described in the book.
+ *  
+ *  22B. I implement the multiply method in the LargeInt class which is located in the largeints package.
+ *  
+ *  22C. I added multiplication to the driver application, as seen below.
+ */
+
+import java.util.Scanner;
+import largeInts.LargeInt;
+
+public class Lab7 
+{
+  public static void main(String[] args)
+  {
+    Scanner conIn = new Scanner(System.in);
+
+    LargeInt first;     
+    LargeInt second;     
+
+    String intString;
+    String more = null;    // used to stop or continue processing
+
+    do
+    {
+      // Get large integers.
+      System.out.println("Enter the first large integer: ");
+      intString = conIn.nextLine();
+      first = new LargeInt(intString);
+      
+      System.out.println("Enter the second large integer: ");
+      intString = conIn.nextLine();
+      second = new LargeInt(intString);
+      System.out.println();
+      
+      // Perform and report the addition and subtraction.
+      System.out.print("First number:  ");
+      System.out.println(first);
+      System.out.print("Second number: ");
+      System.out.println(second);
+      System.out.print("Sum:           ");
+      System.out.println(LargeInt.add(first,second));
+      System.out.print("Difference:    ");
+      System.out.println(LargeInt.subtract(first,second));
+      System.out.print("Product:	");
+      System.out.println(LargeInt.multiply(first, second));
+      
+      // Determine if there is more to process.
+      System.out.println();
+      System.out.print("Process another pair of numbers? (Y=Yes): ");
+      more = conIn.nextLine();
+      System.out.println();
+
+    }
+    while (more.equalsIgnoreCase("y"));
+    
+    conIn.close();
+  }
+}

@@ -1,0 +1,62 @@
+package Lab7;
+
+/*
+ *  22A. One algorithm you could implement to multiply two large integers would be to do an element wise multiplication and keep track of the carried values,
+ *  adding the carry values to the next byte slot, similar to how the carry works when adding digits as shown in the book. The multiplication can work very
+ *  similarly to the addition algorithm. This way would be consistent with the teaching of the book and makes a lot of sense to implement in this fashion, 
+ *  as such, this is the way in which I will implement the multiply method of the large integer class.
+ *  
+ *  22B. I implement the multiply method in the LargeInt class which is located in the largeints package.
+ *  
+ *  22C. I added multiplication to the app, as seen below.
+ */
+
+import java.util.Scanner;
+import largeInts.LargeInt;
+
+public class Lab7 
+{
+  public static void main(String[] args)
+  {
+    Scanner conIn = new Scanner(System.in);
+
+    LargeInt first;     
+    LargeInt second;     
+
+    String intString;
+    String more = null;    // used to stop or continue processing
+
+    do
+    {
+      // Get large integers.
+      System.out.println("Enter the first large integer: ");
+      intString = conIn.nextLine();
+      first = new LargeInt(intString);
+      
+      System.out.println("Enter the second large integer: ");
+      intString = conIn.nextLine();
+      second = new LargeInt(intString);
+      System.out.println();
+      
+      // Perform and report the addition and subtraction.
+      System.out.print("First number:  ");
+      System.out.println(first);
+      System.out.print("Second number: ");
+      System.out.println(second);
+      System.out.print("Sum:           ");
+      System.out.println(LargeInt.add(first,second));
+      System.out.print("Difference:    ");
+      System.out.println(LargeInt.subtract(first,second));
+      
+      // Determine if there is more to process.
+      System.out.println();
+      System.out.print("Process another pair of numbers? (Y=Yes): ");
+      more = conIn.nextLine();
+      System.out.println();
+
+    }
+    while (more.equalsIgnoreCase("y"));
+    
+    conIn.close();
+  }
+}

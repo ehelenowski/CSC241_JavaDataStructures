@@ -6,4 +6,5 @@
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="support.BSTNode"/>
 <fullyQualifiedTypeName name="lists.RefUnsortedList"/>
+<fullyQualifiedTypeName name="byteLists.SpecializedList"/>
 </qualifiedTypeNameHistroy>
