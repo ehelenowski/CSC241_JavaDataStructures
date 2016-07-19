@@ -1,0 +1,65 @@
+package Lab10;
+
+import java.util.Random;
+
+	public class Lab10 {
+		static final int SIZE = 100; // size of array to be sorted
+		static final int RANDSAMP = 10;
+		static int[] values = new int[SIZE];   // values to be stored
+		static int[] values2 = new int[10];		// random values to be searched for
+
+	static void initValues()
+	  // Initializes the values array with random integers from 0 to 99.
+	  {
+	    Random rand = new Random();
+	    for (int index = 0; index < SIZE; index++)
+	      values[index] = Math.abs(rand.nextInt()) % 100;
+	    for (int i = 0; i < RANDSAMP; i++)
+	    	values2[i] = values[Math.abs(rand.nextInt()) % SIZE]; 
+	  }
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		initValues();
+		HashTable sizeSeven = new HashTable(7,2); //Create a hash table with a size of 7
+		HashTable sizeFiftyOne = new HashTable(51,5); //Create a hash table with a size of 51
+		HashTable sizeOneFiftyOne = new HashTable(151,25); //Create a hash table with a size of 151
+		
+		//Populate the Hash Tables
+		for (int i = 0; i < values.length ; i++){
+			sizeSeven.add(new HashableInt(values[i]));
+			sizeFiftyOne.add(new HashableInt(values[i]));
+			sizeOneFiftyOne.add(new HashableInt(values[i]));
+		}
+		
+		//Print the stored values of the Hash Tables
+		System.out.println(sizeSeven);
+		System.out.println(sizeFiftyOne);
+		System.out.println(sizeOneFiftyOne);
+		
+		//Search for 10 random numbers in each hashtable, show wheter the table contains in and how many comparisons that took
+		for (int i = 0; i < values2.length; i++){
+			System.out.println("Searching for the number: "+values2[i]);
+			System.out.println(System.lineSeparator());
+			
+			System.out.println("Table Size:\tSearch Value:\tTable Contains Value:\tNumber of Comparisons Needed:\t");
+			System.out.println(sizeSeven.getSize()+"\t"+values2[i]+"\t"+sizeSeven.contains(new HashableInt(values2[i]))+"\t"+sizeSeven.getNumberCompares());
+			System.out.print("The Hash Table of size 7 contains "+values2[i]+"? ");
+			System.out.println(sizeSeven.contains(new HashableInt(values2[i])));
+			System.out.println("This took "+sizeSeven.getNumberCompares()+ " comparisons");
+			System.out.println(System.lineSeparator()+System.lineSeparator());
+			
+			System.out.print("The Hash Table of size 51 contains "+values2[i]+"? ");
+			System.out.println(sizeFiftyOne.contains(new HashableInt(values2[i])));
+			System.out.println("This took "+sizeFiftyOne.getNumberCompares()+ " comparisons");
+			System.out.println(System.lineSeparator()+System.lineSeparator());
+			
+			System.out.print("The Hash Table of size 151 contains "+values2[i]+"? ");
+			System.out.println(sizeOneFiftyOne.contains(new HashableInt(values2[i])));
+			System.out.println("This took "+sizeOneFiftyOne.getNumberCompares()+ " comparisons");
+			System.out.println(System.lineSeparator()+System.lineSeparator());
+			
+		}
+	}
+
+}

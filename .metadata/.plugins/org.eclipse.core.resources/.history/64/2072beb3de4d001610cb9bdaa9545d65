@@ -1,0 +1,36 @@
+package Lab10;
+
+public class HashableInt implements Hashable {
+	private int value;
+	
+	public HashableInt(int value){
+		this.value = value;
+	}
+	
+	public void setValue(int value){
+		this.value = value;
+	}
+	
+	public int getValue(){
+		return value;
+	}
+	
+	@Override
+	public int hash(int sizeTable) {
+		// TODO Auto-generated method stub
+		return value % sizeTable;
+	}
+	
+	public boolean equals(Hashable that){
+		if (that != null)
+			return this.value == that.getValue();
+		else
+			return false
+	}
+	
+	public String toString(){
+		return Integer.toString(value);
+	}
+
+
+}

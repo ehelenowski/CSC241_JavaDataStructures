@@ -1,0 +1,11 @@
+package Lab10;
+
+public class HashableInt implements Hashable {
+
+	@Override
+	public int getValue() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

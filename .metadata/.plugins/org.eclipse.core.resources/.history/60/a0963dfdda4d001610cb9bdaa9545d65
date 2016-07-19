@@ -1,0 +1,83 @@
+package Lab10;
+
+public class HashTable {
+	private int size;
+	private Hashable[] table;
+	private int numElements = 0;
+	private int location;
+	private int relativePrime;
+	
+	public HashTable(int size, int relativePrime){
+		/*
+		 * Precondition: The size and relativePrime are relatively prime with respect to each other.
+		 * 
+		 * Postcondition: A hash table of the relevant size is is instantiated.
+		 */
+		this.size = size;
+		table = new Hashable[size];
+		this.relativePrime = relativePrime;
+	}
+	
+	public void add(Hashable element){
+		/*
+		 * Precondition: You add a hashable element
+		 * 
+		 * Postcondition: Adds the element to the hash table
+		 */
+			location = element.hash(size);
+		
+			while (table[location] != null){
+				location = (location + relativePrime) % size; //Uses a linear probing rehash function to handle collisions
+			}
+		
+			table[location] = element;
+			numElements++;	
+	}
+	
+	public boolean isFull(){
+		return this.getSize() == numElements;
+	}
+	
+	public Hashable get(Hashable element){
+		/*
+		 * Precondition: You search for an Hashable element
+		 * 
+		 * Postcondition: The element is returned if it exists in the
+		 * has or null is returned if it doesn't exist.
+		 */
+		location = element.hash(size);
+		int numCheck = 0;
+		
+		while (numCheck <= size){ //Uses linear probing to find an element
+			if (table[location].equals(element))
+				return table[location];
+			location = (location+relativePrime) % size; 
+			numCheck++;
+		}
+		return null;
+	}
+	
+	public void remove(Hashable element){
+		if (this.get(element) != null){
+			table[location] = null;
+			numElements--;
+		}
+	}
+	
+	public boolean contain(Hashable element){
+		return this.get(element) != null;
+	}
+	
+	
+	public int getSize(){
+		return size;
+	}
+	
+	public String toString(){
+		String r = "HashTable of Size "+size+" is: \n";
+		for (int i = 0; i < size; i++){
+			r += table[i] + System.lineSeparator();
+		}
+		return r;
+	}
+}

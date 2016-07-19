@@ -1,0 +1,12 @@
+package Lab10;
+
+public class HashableInt implements Hashable {
+	int info;
+	
+	@Override
+	public int hash(int sizeTable)) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

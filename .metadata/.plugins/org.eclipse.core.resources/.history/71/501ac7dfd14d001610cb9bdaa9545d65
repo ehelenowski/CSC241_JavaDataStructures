@@ -1,0 +1,5 @@
+package Lab10;
+
+public interface Hashable {
+	public int hash();
+}
