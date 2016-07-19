@@ -1,0 +1,21 @@
+package Lab8;
+
+import graphs.WeightedGraphInterface;
+import graphs.WeightedGraphList;
+
+public class Lab8 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		WeightedGraphInterface<String> test = new WeightedGraphList<String>();
+		test.addVertex("Atlanta");
+		test.addVertex("Austin");
+		test.addVertex("Chicago");
+		test.addVertex("Dallas");
+		test.addVertex("Denver");
+		test.addVertex("Houston");
+		test.addVertex("Washington");
+		System.out.println(test);
+	}
+
+}

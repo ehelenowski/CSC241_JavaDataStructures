@@ -1,0 +1,50 @@
+package graphs;
+
+import queues.LinkedUnbndQueue;
+
+public class RefGraphNode<T> {
+	private T info;
+	private RefGraphNode<T> nextNode;
+	private EdgeNode<T> adjNode;
+	
+	public RefGraphNode(){}
+	
+	public RefGraphNode(T info) {
+		this.info = info;
+	}
+	
+	public void setInfo(T info){
+		this.info = info;
+	}
+	
+	public T getInfo(){
+		return info;
+	}
+	
+	public void setNext(RefGraphNode<T> next){
+		this.nextNode = next;
+	}
+	
+	public RefGraphNode<T> getNextNode(){
+		return nextNode;
+	}
+	
+	public LinkedUnbndQueue<RefGraphNode<T>> getAdjacentNodes(){
+		LinkedUnbndQueue<RefGraphNode<T>> acc = new LinkedUnbndQueue<RefGraphNode<T>>();
+		return null;
+	}
+	
+	public void addAdjacent(EdgeNode<T> adj){
+		if (adjNode == null){
+			adjNode = adj;
+		}
+		else{
+			EdgeNode<T> iter = adjNode;
+			while (iter.getNext() != null)
+				iter = iter.getNext();
+			iter.setNext(adj);
+		}
+	}
+	
+	
+}

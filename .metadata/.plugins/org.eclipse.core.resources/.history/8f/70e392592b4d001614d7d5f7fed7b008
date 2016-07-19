@@ -1,0 +1,23 @@
+package graphs;
+
+public class RefGraphNode<T> {
+	private T info;
+	private RefGraphNode nextNode;
+	private RefAdjNode adjNode;
+	
+	public RefGraphNode(){}
+	
+	public RefGraphNode(T info) {
+		this.info = info;
+	}
+	
+	public void setInfo(T info){
+		this.info = info;
+	}
+	
+	public void setNext(RefGraphNode<T> next){
+		this.nextNode = next;
+	}
+	
+	
+}

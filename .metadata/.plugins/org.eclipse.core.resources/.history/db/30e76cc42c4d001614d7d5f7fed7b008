@@ -1,0 +1,24 @@
+package graphs;
+
+public class EdgeNode<T> {
+	T info;
+	T info2;
+	EdgeNode next;
+	
+	public EdgeNode(T info){
+		this.info = info;
+	}
+	
+	public EdgeNode() {}
+	
+	public void setInfo(T info){
+		this.info = info;
+	}
+	
+	public T getInfo(){
+		return info;
+	}
+	
+	
+
+}

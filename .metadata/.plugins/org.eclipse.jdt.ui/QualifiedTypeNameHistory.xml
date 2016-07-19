@@ -7,4 +7,7 @@
 <fullyQualifiedTypeName name="support.BSTNode"/>
 <fullyQualifiedTypeName name="lists.RefUnsortedList"/>
 <fullyQualifiedTypeName name="byteLists.SpecializedList"/>
+<fullyQualifiedTypeName name="queues.LinkedUnbndQueue"/>
+<fullyQualifiedTypeName name="graphs.WeightedGraphList"/>
+<fullyQualifiedTypeName name="graphs.WeightedGraphInterface"/>
 </qualifiedTypeNameHistroy>

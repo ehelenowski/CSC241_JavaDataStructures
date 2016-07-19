@@ -1,0 +1,37 @@
+package graphs;
+
+public class EdgeNode<T> {
+	T info;
+	T weight;
+	EdgeNode<T> next;
+	
+	public EdgeNode(T info){
+		this.info = info;
+	}
+	
+	public EdgeNode() {}
+	
+	public void setInfo(T info){
+		this.info = info;
+	}
+	
+	public T getInfo(){
+		return info;
+	}
+	
+	public void setWeight(T weight){
+		this.weight = weight;
+	}
+	
+	public T getWeight(){
+		return weight;
+	}
+	
+	public void setNext(EdgeNode<T> edge){
+		this.next = edge;
+	}
+	
+	public EdgeNode<T> getNext(){
+		return next;
+	}
+}
